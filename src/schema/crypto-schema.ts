@@ -6,12 +6,11 @@ export const cryptoSchema = z.object({
 })
 
 
-export const CryptoCurrencyResponseSchema = z.array(
-    z.object({
+export const CryptoCurrencyResponseSchema = z.object({
         CoinInfo:z.object({
-            Fullname:z.string(),
+            FullName:z.string(),
             Name:z.string()
         })
-    }))
+    })
     
 export const CryptoCurrenciesResponseSchema = z.array(CryptoCurrencyResponseSchema)
