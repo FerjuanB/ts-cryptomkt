@@ -6,6 +6,7 @@ import { fetchCurrentPrice, getCryptos } from "./services/Cryposervice"
 type CryptoStore = {
     cryptoCurrencies: CryptoCurrency[]
     cryptoPrice: CryptoPrice //viene de los types, que a su vez tiene inferido del schema de zod
+    loading: boolean
     fetchCryptos: () => Promise<void>
     fetchData: (pair: Pair) => Promise<void>
 
@@ -22,6 +23,7 @@ export const useCryptoStore = create <CryptoStore>()(devtools((set)=>({
         CHANGEPCT24HOUR: '',
         LASTUPDATE: ''
     },
+    loading:false,
     fetchCryptos: async () =>{
     const cryptoCurrencies = await getCryptos()
     set(()=>({
@@ -29,9 +31,13 @@ export const useCryptoStore = create <CryptoStore>()(devtools((set)=>({
     }))
     },
     fetchData: async (pair) =>{
-     const cryptoPrice =   await fetchCurrentPrice(pair)
+        set(()=>({
+            loading:true
+         }))
+        const cryptoPrice =   await fetchCurrentPrice(pair)
      set(()=>({
-        cryptoPrice
+        cryptoPrice,
+        loading:false
      }))
     }
 })))
