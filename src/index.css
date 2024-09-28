@@ -86,3 +86,41 @@ body{
     } 
 }
 }   
+
+.error{
+    text-align: center;
+    color:#dc143c;
+    background-color: #c441cd2d;
+    border-radius: .5rem;
+    padding: 1rem;
+}
+
+.result-container{
+    margin-top: 5rem;
+    background-color: var(--primaryColor-light-hover);
+        border-radius: 0.5rem;
+        h2{
+        text-align: center;
+        color: var(--primaryColor-dark-hover);
+        background-color: var(--primaryColor-light-hover);
+        border-radius: 0.5rem;
+    }
+}
+
+.result{
+display: grid;
+grid-template-columns: repeat(2,1fr);
+align-items: center;
+        p{
+            margin: 0 0 1rem;
+            font-size: 1.6rem;
+        }
+        span{
+            font-weight: 700;
+            color: var(--primaryColor-dark-hover);
+        }
+        img{
+            width: 100%;
+            max-width: 10rem;
+        }
+    }
